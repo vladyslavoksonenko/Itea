@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <div id="one">one</div>
+
+    <script>
+        var divOne = document.querySelector("#one");
+        var divTwo = document.querySelector("#two");
+
+        divOne.insertAdjacentHTML("afterend", `<div onclick=\"twoClick();\" id=\"two\">Two</div>`);  
+        var divTwo = document.querySelector("#two");
+        function twoClick() {
+            
+            console.log("f");
+            divTwo.insertAdjacentHTML("beforebegin", "<div onclick=\"\" id=\"two_first\">two_first</div>");
+            divOne.insertAdjacentHTML("afterend", `<div id=\"two_second\">two_second</div>`);
+            divTwoSecond = document.querySelector("#two_second");
+            document.body.removeChild(divTwo, divTwoSecond);
+
+            
+        };
+        
+    // Добавьте после дива с id=one еще один див с текстом two и id=two
+    // На клик по id=two добавьте перед ним див с id - two_first, а див с id=two измените на two_second 
+    </script>
+</body>
+</html>
