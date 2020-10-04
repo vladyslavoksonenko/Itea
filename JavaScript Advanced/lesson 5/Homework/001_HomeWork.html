@@ -1,0 +1,53 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden-text {
+            display: none !important;
+        }
+
+        .text-content {
+            border: 1px solid #000;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input id="toggle-text" type="button" value="Открыть текст">
+    <input id="clear-func" type="button" value="Отмена обработчика">
+    
+    <div class="text-content hidden-text">
+        <p>Текст в тексте возле текста на тексте</p>
+        <p>Текст в тексте возле текста на тексте</p>
+    </div>
+    <script>
+        var buttonToggle = document.querySelector("#togle-text");
+        var buttonClear = document.querySelector("#clear-func");
+        var textContent = document.querySelector(".text-content");
+
+        buttonToggle = addEventListener("click", toggleClass);
+        buttonClear = removeEventListener("click", toggleClass);
+        
+        function toggleClass() {
+            textContent.classList.toggle("hidden-text");
+            if (textContent.classList[1] == "hidden-text") {
+                event.target.value = "Открыть текст";
+            } else {
+                event.target.value = "Закрыть";
+            }
+            
+            // console.log(textContent.classList.value);
+        }
+
+        
+    </script>
+</body>
+</html>

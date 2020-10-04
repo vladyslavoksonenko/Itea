@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        button {
+            margin: auto;
+        }
+        div {
+            display: flex;
+            border: 1px solid #000;
+            padding: 13px;
+            float: left;
+            margin: 5px;
+        }
+        span {
+            display: inline-block;
+            padding: 23px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик.
+
+    Доработайте пример 004_Attr_Tech.html таким образом, чтобы при наведении на span элементы,
+    подсказка сплыва под ними, а не в модальном окне. Используйте addEventListener -->
+
+    <div>
+        <button type="submit">submit</button>
+        <span>1 Чтобы хорошо обработать событие, недостаточно знать о том, что это – «клик» или «нажатие клавиши». Могут понадобиться детали: координаты курсора, введённый символ и другие, в зависимости от события.</span>
+    </div>
+    <div>
+        <button type="submit">submit</button>
+        <span>2 Чтобы хорошо обработать событие, недостаточно знать о том, что это – «клик» или «нажатие клавиши». Могут понадобиться детали: координаты курсора, введённый символ и другие, в зависимости от события.</span>
+    </div>
+    <div>
+        <button type="submit">submit</button>
+        <span>3 Чтобы хорошо обработать событие, недостаточно знать о том, что это – «клик» или «нажатие клавиши». Могут понадобиться детали: координаты курсора, введённый символ и другие, в зависимости от события.</span>
+    </div>
+    <div>
+        <button type="submit">submit</button>
+        <span>4 Чтобы хорошо обработать событие, недостаточно знать о том, что это – «клик» или «нажатие клавиши». Могут понадобиться детали: координаты курсора, введённый символ и другие, в зависимости от события.</span>
+    </div>
+    <div>
+        <button type="submit">submit</button>
+        <span>5 Чтобы хорошо обработать событие, недостаточно знать о том, что это – «клик» или «нажатие клавиши». Могут понадобиться детали: координаты курсора, введённый символ и другие, в зависимости от события.</span>
+    </div>
+    <script>
+        buttonDel = document.querySelectorAll("button");
+        divBlock = document.querySelectorAll("div");
+
+        buttonDel = addEventListener("click", DelitedBlock);
+
+        function DelitedBlock(event) {
+            event.target.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

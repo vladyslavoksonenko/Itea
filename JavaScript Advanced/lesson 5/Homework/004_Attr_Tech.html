@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html> 
+<head>
+  <meta charset="utf-8">
+  <script>
+    window.onload = function () {
+      var mainDiv = document.getElementById("main-div");
+      var modal = document.querySelector("#modal");
+
+      mainDiv = addEventListener("mouseover", MainDivOver);
+
+      function MainDivOver() {
+        var target = event && event.target;
+        var dataToggleId = target.getAttribute("data-tooltip");
+        if (!dataToggleId) {
+          return;
+        }
+
+        modal.innerHTML = dataToggleId;
+        modal.style.top = target.offsetHeight + target.offsetTop + "px";
+        modal.style.left = target.offsetLeft + "px";
+      }
+      
+};
+
+</script>
+</head>
+<body>
+  <div id="main-div">
+    <span data-tooltip="наведите">наведите</span> 
+    <span data-tooltip="для">для</span>
+    <span data-tooltip="подсказки">подсказки</span>
+    <span id="modal"></span>
+    <style>
+      #modal {
+        position: absolute;
+        background-color: #00000070;
+        font-size: small;
+        padding: 2px;
+        border-radius: 5px;
+        top: 0;
+        left: -20px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+</div>
+</body>
+</html>
