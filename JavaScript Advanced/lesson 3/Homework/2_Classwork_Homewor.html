@@ -1,0 +1,49 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <input type="text" >
+    <input type="button" value="Отобразить">
+    <ul id="info">
+    </ul> 
+    <script>
+        var textInput = document.querySelector(`input[type="text"]`);
+        var button = document.querySelector(`input[type="button"]`);
+        var info = document.querySelector("#info");
+        var regStr = /\s/;
+        var regSearchA = /a/g;
+        
+        button.addEventListener("click", displayClick);
+
+        function displayClick() {
+            var textInputReg = textInput.value.split(regStr);
+            for (var i = 0; i < textInputReg.length; i++) {  
+                var liElement = document.createElement(`li`);
+                liElement.innerHTML =  
+                i == 0 ? textInputReg[i].toUpperCase() :
+                i == textInputReg.length - 1 || i == textInputReg.length - 2 ? textInputReg[i].toLowerCase() 
+                : textInputReg[i];
+                info.appendChild(liElement);
+            }
+
+            var textInputRegA = textInput.value.match(regSearchA);
+            alert(`Все а ${textInputRegA} количество: ${textInputRegA.length}`);
+            
+            
+            
+        }
+
+    </script>
+
+</body>
+</html>
