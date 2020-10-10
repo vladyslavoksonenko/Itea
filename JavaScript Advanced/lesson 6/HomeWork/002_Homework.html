@@ -1,0 +1,121 @@
+<!-- Переделайте примерм 013 через работу атрибутов.
+ Попробуйте варианты с рефакторингом -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+
+        .hidden {
+            opacity: 0;
+            top: -1100px !important;
+        }
+
+        #modal {
+            background-color: #00000085;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            margin: 40px auto;
+            background-color: #e8e8e8;
+            padding: 20px;
+        }
+        input[type="submit"] {
+            margin: 2px auto;
+        }
+
+        .wrong {
+            color: red;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="go-form">Открыть Форму</button>
+
+    <div id= "modal" class= "hidden">
+        <form action="" method="get">
+            Email:
+            <input type="text" name="email">
+            <span class="wrong hidden">Введите коректно Email</span>
+            Phone number:
+            <input type="text" name="phonenumber">
+            <span class="wrong hidden">Введите коректно Номер телефона</span>
+            Name:
+            <input type="text" name="name">
+            <span class="wrong hidden">Введите коректно Имя</span>
+        </br>
+            <input type="submit" value="Send">
+        </form>
+    </div>
+
+    <script>
+       var buttonOpenForm = document.querySelector("#go-form");
+       var modalForm = document.querySelector("#modal");
+       var form = document.querySelector("form");
+        
+      
+       form.addEventListener("change", changeForm);
+
+       function changeForm() {
+           switch (event.target.name) {
+               case "email":
+                   var regEmail = /\S+@\S+\.\S+/;
+                   valid(regEmail, event.target);
+                   break;
+                case "phonenumber":
+                    var regPhoneNumber = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+                    valid(regPhoneNumber, event.target);
+                    break;
+                case "name":
+                    var regName = /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/;
+                    valid(regName, event.target);
+                    break;
+           }
+       }
+
+       var valid = (reg, inputTarget) => {
+        var res = reg.test(inputTarget.value);
+        if (res == false) {
+            inputTarget.nextElementSibling.classList.remove("hidden");
+            inputTarget.style.cssText = "border-color: red;"
+        
+        } else {
+            inputTarget.style.cssText = "border-color: #57ff55;"
+            inputTarget.nextElementSibling.classList.add("hidden");
+        }
+       }
+
+    //    form.addEventListener("click", inputNull);
+
+    //    var inputNull = () => {
+    //         if (res == false) {
+    //             console.log(event.target);
+    //         }
+    //    }
+       
+       buttonOpenForm.addEventListener("click", function () {
+           modalForm.classList.toggle("hidden");
+       });
+
+       
+
+       
+
+       
+    </script>
+</body>
+</html>
