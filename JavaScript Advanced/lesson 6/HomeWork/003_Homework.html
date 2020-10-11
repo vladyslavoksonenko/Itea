@@ -1,0 +1,61 @@
+<!-- 2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+    при попадании div к краю окна, он переходит к началу окна. -->
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #block {
+            background-color: saddlebrown;
+            /* display: block; */
+            position: absolute;
+            width: 300px;
+            height: 100px;
+        }
+        #stoped {
+            top: 100px;
+            position: absolute;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="block"></div>
+    <button id="stoped">Стоп</button>
+    
+
+    <script>
+        var block = document.querySelector('#block');
+        var stoped = document.querySelector('#stoped');
+
+        block.addEventListener("click", blockGo);
+        var i = 0;
+        function blockGo() {
+            document.body.style.overflow = "hidden";
+            var blockGoLeft = setInterval(() => {
+               block.style.left = i + "px";
+               i++;
+               
+
+               if (window.innerWidth == i ) {
+                   i = -block.offsetWidth;
+                  
+               }
+
+               
+              
+            }, 10);
+            stoped.addEventListener("click", function () {
+                    clearInterval(blockGoLeft);
+            });
+        }
+
+        
+        
+
+    </script>
+</body>
+</html>

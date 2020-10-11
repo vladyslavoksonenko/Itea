@@ -7,8 +7,7 @@
 <body>
     <!-- 
 	1. back to top button; drag;
-	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
-	при попадании div к краю окна, он переходит к началу окна.
+	
     -->
     
     <span id="circle"></span>
@@ -39,8 +38,8 @@
         console.log(circle);
 
         function KeyMov(e) {
-            var x = e.clientX - 12;
-            var y = e.clientY - 12;
+            var x = e.clientX - 18;
+            var y = e.clientY - 18;
             event.target.style.left = x + "px";
             event.target.style.top = y + "px";
             console.log(event);
