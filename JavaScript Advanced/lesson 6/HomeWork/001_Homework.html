@@ -7,7 +7,8 @@
 <body>
     <!-- 
 	1. back to top button; drag;
-	
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
     -->
     
     <span id="circle"></span>
@@ -24,27 +25,25 @@
     <script>
         var circle = document.querySelector("#circle");
     
-        circle = addEventListener("mousedown", KeyDown);
-        circle = addEventListener("mouseup", KeyUp);
+        circle.addEventListener("mousedown", KeyDown);
+        circle.addEventListener("mouseup", KeyUp);
 
-        console.log(circle);
+        
         
         function KeyDown(e) {
             if (event.target == document.querySelector("#circle")) {
-                circle = addEventListener("mousemove", KeyMov);     
-            } else {
-    
-            }       
+                document = addEventListener("mousemove", KeyMov);     
+            }        
         }
 
-        console.log(circle);
+    
 
         function KeyMov(e) {
-            var x = e.clientX - 20;
-            var y = e.clientY - 20;
-            event.target.style.left = x + "px";
-            event.target.style.top = y + "px";
-            console.log(event);
+            var x = e.clientX - 12;
+            var y = e.clientY - 12;
+            circle.style.left = x + "px";
+            circle.style.top = y + "px";
+        
         }
 
         function KeyUp(e) {
