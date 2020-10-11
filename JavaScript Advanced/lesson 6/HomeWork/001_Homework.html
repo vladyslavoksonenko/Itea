@@ -32,14 +32,16 @@
         function KeyDown(e) {
             if (event.target == document.querySelector("#circle")) {
                 circle = addEventListener("mousemove", KeyMov);     
-            }        
+            } else {
+    
+            }       
         }
 
         console.log(circle);
 
         function KeyMov(e) {
-            var x = e.clientX - 18;
-            var y = e.clientY - 18;
+            var x = e.clientX - 20;
+            var y = e.clientY - 20;
             event.target.style.left = x + "px";
             event.target.style.top = y + "px";
             console.log(event);

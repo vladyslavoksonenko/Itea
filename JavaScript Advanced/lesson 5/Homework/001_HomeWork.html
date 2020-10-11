@@ -29,12 +29,12 @@
         <p>Текст в тексте возле текста на тексте</p>
     </div>
     <script>
-        var buttonToggle = document.querySelector("#togle-text");
+        var buttonToggle = document.querySelector("#toggle-text");
         var buttonClear = document.querySelector("#clear-func");
         var textContent = document.querySelector(".text-content");
 
-        buttonToggle = addEventListener("click", toggleClass);
-        buttonClear = removeEventListener("click", toggleClass);
+        buttonToggle.addEventListener("click", toggleClass);
+        
         
         function toggleClass() {
             textContent.classList.toggle("hidden-text");
@@ -46,6 +46,9 @@
             
             // console.log(textContent.classList.value);
         }
+        buttonClear.addEventListener("click", function () {
+            buttonToggle.removeEventListener("click", toggleClass);
+        });
 
         
     </script>
