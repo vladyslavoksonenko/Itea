@@ -1,0 +1,79 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    
+</head>
+<body>
+    <script> 
+        function Man() {
+            this.walk = function () {
+                console.log("walk");
+            }
+            this.eat = function () {
+                console.log('eat');
+            };
+            this.drink = function () {
+                console.log('drink');
+            };
+        }
+
+        function Soldier() {
+            this.shoot = function () {
+                console.log("shoot");
+            }
+        }
+
+        function Doctor() {
+            this.cure = function () {
+                console.log("cure");
+            }
+        }
+
+        Soldier.prototype = new Man();
+        Doctor.prototype = new Man();
+
+        var soldier = new Soldier();
+        var doctor = new Doctor();
+
+        console.log(soldier.walk());
+        console.log(doctor.eat());
+
+        //ECMA Script 6
+
+        // class Man {
+        //     walk() {
+        //         console.log("walk");
+        //     }
+
+        //     eat() {
+        //         console.log("eat");
+        //     }
+
+        //     drink() {
+        //         console.log("drink");
+        //     }
+        // }
+
+        // class Soldier extends Man {
+        //     shoot() {
+        //         console.log("Soldier");
+        //     }
+        // }
+
+        // class Doctor extends Man {
+        //     cure() {
+        //         console.log("cure");
+        //     }
+        // }
+
+        // let doctor = new Doctor();
+        // let soldier = new Soldier();
+
+        // console.log(doctor);
+        // console.log(soldier);
+    </script>
+</body>
+</html>

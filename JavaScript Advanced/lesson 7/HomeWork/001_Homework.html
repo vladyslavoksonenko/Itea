@@ -1,0 +1,73 @@
+<!-- Создайте функцию, которая возвращает день недели для даты.
+День нужно возвратить в формате - понедельник имеет номер 1, вторник номер 2, …, воскресенье - номер 7. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <p>Введите дату в формате MONTH/DAY/YEAR</p>
+    <input type="text">
+    <script>
+        
+        var inputData = document.querySelector("input");
+        inputData.addEventListener("change", strData);
+
+        function strData() {   
+            if (valid(inputData.value) == true) {  
+                var data = new Date(inputData.value);
+                var numWeek = data.getDay();
+                
+                if (numWeek === 0) {
+                    numWeek = 7;
+                }
+
+                switch (numWeek) {
+                    case 1:
+                    alert(numWeek + " Понедельник");
+                    break;
+                    case 2:
+                    alert(numWeek + " Вторник");
+                    break;
+                    case 3:
+                    alert(numWeek +" Среда");
+                    break;
+                    case 4:
+                    alert(numWeek +" Четверг");
+                    break;
+                    case 5:
+                    alert(numWeek + " Пятница");
+                    break;
+                    case 6:
+                    alert(numWeek + " Суббота");
+                    break;
+                    case 7:
+                    alert(numWeek + " Воскресенье");
+                    break;
+                }
+               
+                console.log(numWeek);
+            } 
+        }
+
+        function valid(str) {
+            var dateReg = /\d{2}\/\d{2}\/\d{4}/;
+            var res = dateReg.test(str);
+            if (res == false) {
+                inputData.style.borderColor = "red";
+                inputData.style.color = "red";
+                
+            } else {
+                inputData.style.color = "green";
+                inputData.style.borderColor = "green";
+                return true;
+            }
+        }
+        
+        
+        
+        
+    </script>
+</body>
+</html>
