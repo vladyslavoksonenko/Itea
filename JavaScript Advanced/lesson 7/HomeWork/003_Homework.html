@@ -8,38 +8,80 @@
 <body>
     <script>
     
+    // function Cure() {
+    //     console.log("cure");
+    // }
     
-    function Doctor() {
-        this.walk = function () {
-            console.log("walk");
-        }
-        this.eat = function () {
-            console.log("Eat");
-        }
-        this.drink = function () {
-            console.log("Drink");
-        }
-        this.cure = function() {
-            console.log("Doctor Cure");
-    }
-    }
+    // function Doctor() {
+    //     this.walk = function () {
+    //         console.log("walk");
+    //     }
+    //     this.eat = function () {
+    //         console.log("Eat");
+    //     }
+    //     this.drink = function () {
+    //         console.log("Drink");
+    //     }
+    // }
 
-    function Dentist() {
-        this.cure = function () {
-            console.log("Treat teeth");
-        }
-    }
+    // function Dentist() {
+    //     this.cure = function () {
+    //         console.log("Treat teeth");
+    //     }
+    // }
 
-    function Surgeon() {
-        this.cure = function () {
-            console.log("Perform operations");
-        }
-    }
-    Dentist.prototype = new Doctor();
-    Surgeon.prototype = new Doctor();
+    // function Surgeon() {
+    //     this.cure = function () {
+    //         console.log("Perform operations");
+    //     }
+    // }
+
+    // Doctor.prototype = new Cure();
+    // Dentist.prototype = new Doctor();
+    // Surgeon.prototype = new Doctor();
     
-    var dentist = new Dentist();
-    var surgeon = new Surgeon(); 
+    // var dentist = new Dentist();
+    // var surgeon = new Surgeon(); 
+    // var doctor = new Doctor();
+
+    //ECMAScript 6
+
+        class Cure {
+            cure() {
+                console.log("cure");
+            }       
+        }
+
+        class Doctor extends Cure {
+            walk() {
+                console.log("walk");
+            }
+            eat() {
+                console.log("eat");
+            }
+            drink() {
+                console.log("drink");
+            }
+        }
+
+        class Dentist extends Doctor {
+            cure() {
+                console.log("Treat teeth");
+            }
+        }
+
+        class Surgeon extends Doctor {
+            cure() {
+                console.log("Perform operations");
+            }
+        }
+
+        let dentist = new Dentist();
+        let surgeon = new Surgeon();
+        let doctor = new Doctor();
+
+        console.log(dentist);
+
     </script>
 </body>
 </html>
