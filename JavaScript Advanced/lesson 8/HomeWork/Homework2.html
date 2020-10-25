@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            position: absolute;
+            background-color: #00000057;
+            width: 300px;
+            height: 100px;
+            left: 45%;
+            padding: 5px;
+            text-align: center;
+            border: 2px solid #000;
+        }
+
+        .hidden {
+            display: none !important; 
+        }
+
+        #exit {
+            display: block;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <p>Введите логин</p>
+        <input type="text" name="login">
+        <input type="button" value="login" name="btn">
+    </form>
+
+    
+
+    <div id="title"></div>
+    <input class= "hidden" id="exit" type="button" value="exit">
+
+    <script>
+        addEventListener("load", function () {
+            var form = document.querySelector("form");
+            var strLogin = document.querySelector("input[name=login]");
+            var btn = document.querySelector("input[name=btn]");
+            var btnExit = document.querySelector("#exit");
+            var title = document.querySelector("#title");
+            login();
+
+            function login() {
+                if (window.localStorage.getItem("user") == "admin") {
+                console.log("Welcome " + window.localStorage.getItem("user"));
+                form.classList.add("hidden");
+                btnExit.classList.remove("hidden");
+                title.innerHTML = `<b>Welcome ${window.localStorage.getItem("user")}</b>`;
+                console.log(title);
+             } else {
+                // form.classList.remove("hidden");
+             }
+            }
+
+            btn.addEventListener("click", function() {
+                window.localStorage.setItem("user", strLogin.value.toLowerCase());
+                login();
+            });
+            btnExit.addEventListener("click", function () {
+                form.classList.remove("hidden");
+                btnExit.classList.add("hidden");
+                title.innerHTML = " ";
+                console.log(btnExit);
+            });
+        });
+    </script>
+</body>
+</html>

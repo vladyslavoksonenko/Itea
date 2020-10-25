@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        form {
+            position: absolute;
+            background-color: #00000057;
+            width: 300px;
+            height: 100px;
+            left: 45%;
+            padding: 5px;
+            text-align: center;
+            border: 2px solid #000;
+        }
+
+        .hidden {
+            display: none !important; 
+        }
+
+        #exit {
+            display: block;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+
+    <form>
+        <p>Введите логин</p>
+        <input type="text" name="login">
+        <input type="button" value="login" name="btn">
+    </form>
+
+    
+
+    <div id="title"></div>
+    <input class="hidden" id="exit" type="button" value="exit">
+
+    <script>
+        window.addEventListener("load", function() {
+            
+            var form = document.querySelector("form");
+            var strLogin = document.querySelector("input[name=login]");
+            var btn = document.querySelector("input[name=btn]");
+            var btnExit = document.querySelector("#exit");
+            var title = document.querySelector("#title");
+            
+            
+            document.cookie = "abc=acb"
+            document.cookie = "abc=123123"
+            document.cookie = "111=111"
+            document.cookie = "2=a2"
+            
+            login();
+            
+
+            function getCookie(name) {
+                var arrCookie = document.cookie.split(";");
+
+                for (var i in arrCookie) {
+                    if (arrCookie[i].indexOf(name) >= 0) {
+                        
+                        var resultValueCookie = arrCookie[i].split("=");
+                        resultValueCookie = resultValueCookie[1];
+                        return resultValueCookie;
+                    }                                
+                }
+            }
+
+            function setCookie(name, value) {
+                var updateCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+                document.cookie = updateCookie;
+            }
+
+            function login() {
+                if (getCookie("user") == "admin") {
+                console.log("Welcome " + getCookie("user"));
+                form.classList.add("hidden");
+                btnExit.classList.remove("hidden");
+                title.innerHTML = `<b>Welcome ${getCookie("user")}</b>`;
+                console.log(title);
+             } else {
+                // form.classList.remove("hidden");
+             }
+            }
+            
+
+            btn.addEventListener("click", function() {
+                setCookie("user", strLogin.value.toLowerCase());
+                login();
+            });
+            
+            btnExit.addEventListener("click", function () {
+                form.classList.remove("hidden");
+                btnExit.classList.add("hidden");
+                title.innerHTML = " ";
+                console.log(btnExit);
+            });
+            
+        })
+
+    </script>
+</body>
+</html>
